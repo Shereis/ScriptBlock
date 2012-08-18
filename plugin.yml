@@ -1,0 +1,14 @@
+name: ScriptBlock
+main: scriptblock.ScriptBlock
+version: 0.8.7
+description: Allow you to add Commands Script to any Blocks.
+author: Shereis
+depend: [Vault]
+softdepend: [bPermissions, PermissionsEx, iConomy, BOSEconomy, Currency, MultiCurrency]
+commands:
+    sbinteract :
+        description:
+        usage: 
+    sbwalk:
+        description:
+        usage:
