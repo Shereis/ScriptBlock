@@ -1,12 +1,7 @@
-target
+target/
 .settings
 .project
-v1_8_R1/target
-v1_8_R2/target
-v1_7_R3/target
-v1_7_R4/target
-API/target
-WildSex/target
+.classpath
 
 # Created by https://www.gitignore.io
 
