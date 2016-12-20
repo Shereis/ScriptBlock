@@ -2,6 +2,7 @@ package scriptblock.listeners;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event.Result;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -23,6 +24,7 @@ public class PlayerInteractBlock extends ScriptManager implements Listener {
    public void onPlayerInteract(PlayerInteractEvent event) {
       this.player = event.getPlayer();
       Block block;
+      
       if(event.hasBlock()) {
     	 block = event.getClickedBlock();
          String world = this.player.getWorld().getName();
@@ -37,6 +39,9 @@ public class PlayerInteractBlock extends ScriptManager implements Listener {
                this.mapManager.commandsWaitingMap.remove(playerName);
                this.log.info("[" + this.plugin.getName() + "] " + playerName + " bound \"" + blockInteract.getCommandType().name() + "\" " + this.getName() + " Script...");
                this.log.info("[" + this.plugin.getName() + "] at " + this.blockCoords.getFullCoords());
+               if(event.isBlockInHand()){
+            	   event.setUseItemInHand(Result.DENY);
+               }
             }
          } else if(this.mapManager.blocksMap.containsKey(this.blockCoords.getFullCoords()) && this.permManager.hasSBPerm(this.player, "use", true)) {
             if(this.haveCoolDown(this.player, this.blockCoords) || this.isDelayed(this.player, this.blockCoords)) {
@@ -47,6 +52,9 @@ public class PlayerInteractBlock extends ScriptManager implements Listener {
             this.log.info("[" + this.plugin.getName() + "] at coords " + this.blockCoords.getFullCoords());
             OptionHandler read = new OptionHandler(this, this.player, this.blockCoords);
             read.readScript(0);
+            if(event.isBlockInHand()){
+            	event.setUseItemInHand(Result.DENY);
+            }
          }
       }
 

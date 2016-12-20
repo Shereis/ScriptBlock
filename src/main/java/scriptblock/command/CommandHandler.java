@@ -43,7 +43,7 @@ public class CommandHandler implements CommandExecutor {
          CommandHandler.CommandType[] var9;
          int var8 = (var9 = CommandHandler.CommandType.values()).length;
 
-         for(int var7 = 0; var7 < var8; ++var7) {
+         for(int var7 = 0; var7 < var8; var7++) {
             CommandHandler.CommandType commandType = var9[var7];
             if(body.length > 0 && body[0].equalsIgnoreCase(commandType.name())) {
                if(this.perm.hasSBPerm(this.commandsender, "command." + commandType.name(), true)) {
